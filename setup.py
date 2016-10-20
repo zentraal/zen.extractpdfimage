@@ -25,7 +25,6 @@ setup(name='zen.extractpdfimage',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'Products.usaid'
           'eea.converter'
           # -*- Extra requirements: -*-
       ],
