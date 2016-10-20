@@ -1,0 +1,10 @@
+<registry>
+
+    <record name="zen.extractpdfimage.destfield">
+        <field type="plone.registry.field.TextLine">
+            <title>Destination field</title>
+        </field>
+        <value>imagex</value>
+    </record>
+
+</registry>

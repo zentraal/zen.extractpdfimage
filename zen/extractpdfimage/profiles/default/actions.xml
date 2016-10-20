@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<object name="portal_actions" meta_type="Plone Actions Tool"
+   xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+
+<object name="object_buttons" meta_type="CMF Action Category">
+ <object name="extract-cover-image" meta_type="CMF Action">
+  <property name="title">Extract cover image</property>
+  <property name="description"></property>
+  <property
+     name="url_expr">string:$object_url/@@extract-cover-image</property>
+  <property name="link_target"></property>
+  <property name="icon_expr"></property>
+  <property
+     name="available_expr">python: context.portal_type == 'File'</property>
+  <property name="permissions"/>
+  <property name="visible">True</property>
+ </object>
+</object>
+</object>
