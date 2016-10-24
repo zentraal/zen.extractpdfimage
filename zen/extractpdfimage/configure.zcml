@@ -22,5 +22,11 @@
     class=".views.ExtractCoverImage"
     permission="zope2.View"
     />
+  <browser:page
+    name="bulk-cover-image"
+    for="*"
+    class=".views.BulkCoverImage"
+    permission="zope2.View"
+    />
 
 </configure>
