@@ -52,6 +52,6 @@ class BulkCoverImage(ExtractCoverImage):
             obj = b.getObject()
             self.create_coverimage(obj)
             transaction.commit()
-            logger.info('Analized %s - %s' % (obj.Tilte(), obj.absolute_url()))
+            logger.info('Analized %s - %s' % (obj.Title(), obj.absolute_url()))
 
         return 'OK!'
