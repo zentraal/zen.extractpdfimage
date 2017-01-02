@@ -26,19 +26,19 @@ class ExtractCoverImage(BrowserView):
             obj = self.context
         registry = getUtility(IRegistry)
         dst_field_name = registry['zen.extractpdfimage.destfield']
-        ffield = obj.getField('file')
-        ifield = obj.getField(dst_field_name)
+        ffield = obj.file
+        ifield = hasattr(obj, dst_field_name)
         # if the `dst_field_name` field is not present we are not in
         # the proper context
-        if not ifield or ffield.getContentType(obj) != 'application/pdf':
+        if not ifield or ffield.contentType != 'application/pdf':
             return
         conv = Convert()
-        imagedata = conv(ffield.get(obj).data, **{
+        imagedata = conv(ffield.data, **{
             'data_from': '.pdf',
             'data_to': '.png',
         })
         image = File('ignored-id', 'ignored-title', imagedata, 'image/png')
-        obj.getField(dst_field_name).set(obj, image)
+        obj.imagex = image
         return True
 
 
@@ -47,7 +47,7 @@ class BulkCoverImage(ExtractCoverImage):
     def __call__(self):
         catalog = getToolByName(self.context, name="portal_catalog")
         brains = catalog(
-            object_provides="Products.ATContentTypes.interfaces.file.IATFile")
+            object_provides="plone.app.contenttypes.interfaces.IFile")
         for b in brains:
             obj = b.getObject()
             self.create_coverimage(obj)

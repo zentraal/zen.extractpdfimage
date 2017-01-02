@@ -18,7 +18,7 @@
   <!-- -*- extra stuff goes here -*- -->
   <browser:page
     name="extract-cover-image"
-    for="Products.ATContentTypes.interfaces.file.IATFile"
+    for="plone.app.contenttypes.interfaces.IFile"
     class=".views.ExtractCoverImage"
     permission="zope2.View"
     />
