@@ -1,12 +1,13 @@
 import transaction
 import logging
-from OFS.Image import File
 from zope.component import getUtility
 from Products.statusmessages.interfaces import IStatusMessage
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
+from plone.namedfile.file import NamedBlobImage
 from plone.registry.interfaces import IRegistry
 from eea.converter.convert import Convert
+
 logger = logging.getLogger('zen.extractpdfimage')
 
 
@@ -37,7 +38,7 @@ class ExtractCoverImage(BrowserView):
             'data_from': '.pdf',
             'data_to': '.png',
         })
-        image = File('ignored-id', 'ignored-title', imagedata, 'image/png')
+        image = NamedBlobImage(imagedata, 'image/png', u'image.png')
         obj.imagex = image
         return True
 
