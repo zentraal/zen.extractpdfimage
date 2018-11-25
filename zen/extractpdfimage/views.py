@@ -39,7 +39,7 @@ class ExtractCoverImage(BrowserView):
             'data_to': '.png',
         })
         image = NamedBlobImage(imagedata, 'image/png', u'image.png')
-        obj.imagex = image
+        setattr(obj, dst_field_name, image)
         return True
 
 
