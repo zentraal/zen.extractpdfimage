@@ -5,6 +5,7 @@ from Products.statusmessages.interfaces import IStatusMessage
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
 from plone.namedfile.file import NamedBlobImage
+from plone.namedfile.file import NamedImage
 from plone.registry.interfaces import IRegistry
 from eea.converter.convert import Convert
 
@@ -38,7 +39,10 @@ class ExtractCoverImage(BrowserView):
             'data_from': '.pdf',
             'data_to': '.png',
         })
-        image = NamedBlobImage(imagedata, 'image/png', u'image.png')
+        try:
+            image = NamedBlobImage(imagedata, 'image/png', u'image.png')
+        except:
+            image = NamedImage(imagedata, 'image/png', u'image.png')
         setattr(obj, dst_field_name, image)
         return True
 
