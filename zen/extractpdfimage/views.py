@@ -39,11 +39,12 @@ class ExtractCoverImage(BrowserView):
             'data_from': '.pdf',
             'data_to': '.png',
         })
-        try:
-            image = NamedBlobImage(imagedata, 'image/png', u'image.png')
-        except:
-            image = NamedImage(imagedata, 'image/png', u'image.png')
-        setattr(obj, dst_field_name, image)
+        if imagedata:
+            try:
+                image = NamedBlobImage(imagedata, 'image/png', u'image.png')
+            except:
+                image = NamedImage(imagedata, 'image/png', u'image.png')
+            setattr(obj, dst_field_name, image)
         return True
 
 
